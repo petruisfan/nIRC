@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nIRC</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/main.css"/>
+</head>
+<body ng-app="nirc">
+    <div class="container">
+        <h1>nIRC - node demo chat application</h1>
+    </div>
+    <div class="container chat" data-ng-controller="ChatCtrl">
+        <div class="col-sm-3 chat-participants">
+            <ul>
+                <li ng-repeat="name in participants track by $index" ng-class="{me: name == myName}">{{ name }}</li>
+            </ul>
+        </div>
+        <div class="col-sm-8">
+            <div class="chat-messages">
+                <ul>
+                    <li ng-repeat="m in messages track by $index"><strong ng-class="{me: m.name == myName}">{{ m.name }}</strong> : {{ m.msg }}</li>
+                </ul>
+            </div>
+            <form class="form-inline" role="form" id="chat_form">
+                <div class="form-group col-sm-11">
+                    <input type="text" class="form-control" style="width: 100%" id="chat_input" autofocus="autofocus" ng-model="message">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="submit()">Send</button>
+            </form>
+        </div>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

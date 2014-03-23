@@ -1,0 +1,32 @@
+{
+  "name": "node_intro",
+  "version": "0.0.0",
+  "description": "\"Node demo presented at JavaScript meetup\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petruisfan/nIRC.git"
+  },
+  "keywords": [
+    "node",
+    "socket.io",
+    "demo",
+    "meetup",
+    "javascript",
+    "irc",
+    "chat"
+  ],
+  "author": "Petru Isfan",
+  "license": "Apache 2",
+  "bugs": {
+    "url": "https://github.com/petruisfan/nIRC/issues"
+  },
+  "homepage": "https://github.com/petruisfan/nIRC",
+  "dependencies": {
+    "express": "^3.5.0",
+    "socket.io": "^0.9.16"
+  }
+}

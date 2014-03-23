@@ -1,0 +1,34 @@
+.chat {
+    background: #eee;
+    padding: 20px;
+}
+
+.chat-messages {
+    background: #fff;
+    margin: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 350px;
+    overflow:auto;
+}
+.chat-messages ul {
+    list-style-type: none;
+    font-size: 15px;
+}
+.chat-participants {
+    background: #fff;
+    margin: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 350px;
+    overflow:auto;
+}
+
+.chat-participants ul {
+    list-style-type: none;
+    font-size: 20px;
+}
+
+.me {
+    color: blue;
+}
