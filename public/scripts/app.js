@@ -13,7 +13,7 @@ nirc.controller("ChatCtrl", function($scope, socket) {
     socket.emit('login', $scope.myName);
     //
     // Listeners
-    socket.on('messages', function (data) {
+    socket.on('message', function (data) {
         $scope.messages.push(data);
     });
     socket.on('participants', function (data) {
@@ -22,7 +22,7 @@ nirc.controller("ChatCtrl", function($scope, socket) {
     //
     // scope functions
     $scope.submit = function(){
-        socket.emit('messages', {msg: $scope.message});
+        socket.emit('message', {msg: $scope.message});
         $scope.messages.push({name: $scope.myName, msg: $scope.message});
         $scope.message = "";
     };
