@@ -10,14 +10,14 @@ nirc.controller("ChatCtrl", function($scope, socket) {
     $scope.messages = [];
     //
     // introduce yourself
-    socket.emit('login', {name: $scope.myName});
+    socket.emit('login', $scope.myName);
     //
     // Listeners
     socket.on('messages', function (data) {
         $scope.messages.push(data);
     });
     socket.on('participants', function (data) {
-        $scope.participants = data.names;
+        $scope.participants = data;
     });
     //
     // scope functions

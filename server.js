@@ -7,31 +7,29 @@ var express = require("express")
 
 app.use(express.static('./public'));
 
-var participants = [];
-var disconnects = 0;
+var participants = {};
+var id = 0;
 
 io.sockets.on('connection', function(client) {
-    var name = null;
-    var index = -1;
+    var clientId = 0;
 
     client.on('messages', function (data) {
         console.log("Received: " ,data);
-        data.name = name;
+        data.name = participants[clientId];
         client.broadcast.emit("messages", data);
     });
     client.on("login", function( data ) {
-        console.log("Client " + data.name + " connected");
-        index = participants.push(data.name) - 1;
-        name = data.name;
-        client.emit('participants', { names: participants });
-        client.broadcast.emit('participants', { names: participants });
+        console.log("Client " + data + " connected");
+        participants[++id] = data;
+        clientId = id
+        client.emit('participants', participants);
+        client.broadcast.emit('participants', participants);
     });
     client.on('logout', function () {
-        if (name) {
-            console.log("Client " + name + " disconnected");
-            participants.splice( index - disconnects , 1 );
-            client.broadcast.emit('participants', { names: participants} );
-            disconnects++;
+        if (participants[clientId]) {
+            console.log("Client " + participants[clientId] + " disconnected");
+            delete participants[clientId];
+            client.broadcast.emit('participants', participants );
         }
     })
 });
