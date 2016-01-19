@@ -13,10 +13,10 @@ var id = 0;
 io.sockets.on('connection', function(client) {
     var clientId = 0;
 
-    client.on('messages', function (data) {
+    client.on('message', function (data) {
         console.log("Received: " ,data);
         data.name = participants[clientId];
-        client.broadcast.emit("messages", data);
+        client.broadcast.emit("message", data);
     });
     client.on("login", function( data ) {
         console.log("Client " + data + " connected");
